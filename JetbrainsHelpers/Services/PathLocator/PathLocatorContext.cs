@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using JetbrainsHelpers.Models;
+using JetbrainsHelpers.Services.PathLocator.Strategies;
 
 namespace JetbrainsHelpers.Services.PathLocator
 {

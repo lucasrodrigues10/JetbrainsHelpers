@@ -3,7 +3,7 @@ using System.Linq;
 using System.Management.Automation;
 using JetbrainsHelpers.Models;
 
-namespace JetbrainsHelpers.Services.PathLocator
+namespace JetbrainsHelpers.Services.PathLocator.Strategies
 {
     public class RiderPathLocator : IPathLocatorStrategy
     {
@@ -26,12 +26,12 @@ namespace JetbrainsHelpers.Services.PathLocator
 
         private static IEnumerable<string> FindMsBuild()
         {
-            using var powerShellInst = PowerShell.Create();
-            return powerShellInst.AddScript(MsBuildScript)
-                                 .Invoke()
-                                 .SelectMany(c => c.Properties)
-                                 .Where(c => c.Name == "MSBuildToolsPath")
-                                 .Select(c => (string) c.Value + "MSBuild.exe");
+            using var powershell = PowerShell.Create();
+            return powershell.AddScript(MsBuildScript)
+                             .Invoke()
+                             .SelectMany(c => c.Properties)
+                             .Where(c => c.Name == "MSBuildToolsPath")
+                             .Select(c => (string) c.Value + "MSBuild.exe");
         }
     }
 }
