@@ -18,7 +18,7 @@ namespace JetbrainsHelpers.AppStart
             exclude.Add(ExclusionType.Path, @"%USERPROFILE%\.nuget");
             exclude.ExcludeAll();
 
-            Console.WriteLine("Close to exit");
+            Console.WriteLine("Press something to exit");
             Console.ReadKey();
         }
     }
