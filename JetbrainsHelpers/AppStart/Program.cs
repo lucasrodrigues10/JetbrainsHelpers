@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Linq;
-using JetbrainsHelpers.Models;
 using JetbrainsHelpers.Services;
+using JetbrainsHelpers.Services.PathLocator;
 
 namespace JetbrainsHelpers.AppStart
 {
@@ -9,13 +8,10 @@ namespace JetbrainsHelpers.AppStart
     {
         public static void Main()
         {
+            var pathLocator = new PathLocatorContext(OptionTaker.Get());
             var exclude = new WindowsDefenderExclude();
 
-            PathLocator.FindMsBuild().ToList().ForEach(path => exclude.Add(ExclusionType.Process, path));
-            exclude.Add(ExclusionType.Path, @"%USERPROFILE%\AppData\Local\JetBrains\Rider2021.1");
-            exclude.Add(ExclusionType.Path, @"%USERPROFILE%\AppData\Local\JetBrains\Toolbox\apps\Rider");
-            exclude.Add(ExclusionType.Path, @"%USERPROFILE%\RiderProjects");
-            exclude.Add(ExclusionType.Path, @"%USERPROFILE%\.nuget");
+            exclude.Add(pathLocator.FindPaths());
             exclude.ExcludeAll();
 
             Console.WriteLine("Press something to exit");

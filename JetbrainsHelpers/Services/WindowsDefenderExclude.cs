@@ -9,8 +9,7 @@ namespace JetbrainsHelpers.Services
     {
         private readonly List<ExclusionInformation> _exclusions = new();
 
-        public void Add(ExclusionType type, string parameter) =>
-            _exclusions.Add(new ExclusionInformation(type, parameter));
+        public void Add(IEnumerable<ExclusionInformation> list) => _exclusions.AddRange(list);
 
         public void ExcludeAll()
         {

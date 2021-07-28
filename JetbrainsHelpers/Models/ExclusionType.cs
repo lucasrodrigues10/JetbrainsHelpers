@@ -2,7 +2,7 @@
 {
     public enum ExclusionType
     {
-        Path,
+        Folder,
         Process
     }
 }
