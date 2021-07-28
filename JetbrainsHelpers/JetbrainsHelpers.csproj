@@ -4,7 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <Platforms>AnyCPU;x64;x86</Platforms>
+        <Platforms>x64</Platforms>
+        <Configurations>Debug;Release</Configurations>
     </PropertyGroup>
 
     <ItemGroup>
